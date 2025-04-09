@@ -17,8 +17,13 @@ def main():
              
             correct_answer = input("Enter the correct answer (A/B/C/D): ")
             if correct_answer in ['A', 'B', 'C', 'D']:
-                    break # added a stopper here, so we can manually start the loop again by (Y/N)
+                    break # added a stopper here, so we can manually start the loop again via (Y/N)
                     print("Please enter A, B, C, or D only.")
+
+            file.write(f"Q: {user_input}\n")
+            for i, opt in enumerate(choices):
+                    file.write(f"{chr(65 + i)}) {opt}\n")
+                file.write(f"Correct: {correct}\n\n")
 
         except Exception as e:
             print("An error occurred:", e) #added for error catching, due to problems in line 7
