@@ -13,10 +13,20 @@ def main():
                 input("C: "),
                 input("D: ")
             ]
+            
+             
+            correct_answer = input("Enter the correct answer (A/B/C/D): ")
+            if correct_answer in ['A', 'B', 'C', 'D']:
+                    break # added a stopper here, so we can manually start the loop again by (Y/N)
+                    print("Please enter A, B, C, or D only.")
 
         except Exception as e:
             print("An error occurred:", e) #added for error catching, due to problems in line 7
+            
+		 	
 
 main()
 
-# now we have to worry about the consistency of the loop
+# now we have to focus on asking whether if the user wants to create another question
+# after asking the correct answer we have to break the loop and ask for permission first-
+# before proceeding
