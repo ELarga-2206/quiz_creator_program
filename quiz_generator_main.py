@@ -1,23 +1,23 @@
 def main():
     while True:
-        question = input("Enter your question (type 'a' to stop): ") # changed to due to conflicting program variable input
+        question = input("Enter your question (type 'a' to stop): ") 
 
-        if question.lower == "a": # to handle lowercase
+        if question.lower == "a": 
             break
 
         try:
             print("Enter 4 choices:")
             choices = [
-                input("A: ").strip(), # added .strip for clean user inputs
+                input("A: ").strip(),
                 input("B: ").strip(),
                 input("C: ").strip(),
                 input("D: ").strip()
             ]
             
-            while True:  # we'll add another while loop since i figured that it will create a problem with the sequence
+            while True: 
                 correct_answer = input("Enter the correct answer (A/B/C/D): ").upper().strip()
                 if correct_answer in ['A', 'B', 'C', 'D']:
-                        break # added a stopper here, so we can manually start the loop again via (Y/N)
+                        break 
                         print("Invalid! Please enter A, B, C, or D only.")
 
             with open("quiz_questions.txt", "a", encoding="utf-8") as file:
@@ -31,7 +31,7 @@ def main():
             print("Question saved successfully!")
 
             while True:
-                cont = input("\nAdd another question? (Y/N): ") # fixed the wrong variable name that caused confusion to the program
+                cont = input("\nAdd another question? (Y/N): ") 
                 if cont in ['Y', 'N']:
                     break
                 print("Please enter Y or N.")
