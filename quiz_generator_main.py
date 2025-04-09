@@ -20,10 +20,15 @@ def main():
                     break # added a stopper here, so we can manually start the loop again via (Y/N)
                     print("Please enter A, B, C, or D only.")
 
-            file.write(f"Q: {user_input}\n")
-            for i, opt in enumerate(choices):
-                    file.write(f"{chr(65 + i)}) {opt}\n")
-                file.write(f"Correct: {correct}\n\n")
+            with open("quiz_questions.txt", "a", encoding="utf-8") as file:
+                file.write(f"Question: {question}\n")
+                file.write(f"A: {choices[0]}\n")
+                file.write(f"B: {choices[1]}\n")
+                file.write(f"C: {choices[2]}\n")
+                file.write(f"D: {choices[3]}\n")
+                file.write(f"Correct Answer: {correct_answer}\n")
+                file.write("-" * 40 + "\n")
+            print("Question saved successfully!")
 
         except Exception as e:
             print("An error occurred:", e) #added for error catching, due to problems in line 7
@@ -35,3 +40,4 @@ main()
 # now we have to focus on asking whether if the user wants to create another question
 # after asking the correct answer we have to break the loop and ask for permission first-
 # before proceeding
+# we really have to do this now
