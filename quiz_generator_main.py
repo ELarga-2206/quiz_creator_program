@@ -28,3 +28,21 @@
 
 # also about the tkinter library, still figuring out whether we can put music/sound effects, backgrounds, or any design/interactive
 # buttons. 
+
+def main():
+    while True:
+        
+        user_input = input("enter your question: ")
+
+        if user_input == "a":
+            break
+    
+            print("thanks for using quiz gen!") #not working
+            
+main()   
+
+#next goal: is ask for the choices from A to D
+
+# notice that when run, it keeps asking the same thing unless you press 'a'
+# we have to sequentially shift to the next question after the user answers the 1st: ("whats your question")
+# it has to shift to asking the choices immidiately
