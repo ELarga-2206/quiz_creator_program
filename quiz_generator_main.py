@@ -31,15 +31,18 @@
 
 def main():
     while True:
-        
         user_input = input("enter your question: ")
 
         if user_input == "a":
             break
-    
-            print("thanks for using quiz gen!") #not working
-            
-main()   
+        
+		try:
+			print("enter 4 choices:")     
+			choices = [ input("A: "), input("B: "), input("C: "), input("D: ")]
+        
+if __name__ == "__main__":
+    main()
+
 
 #next goal: is ask for the choices from A to D
 
