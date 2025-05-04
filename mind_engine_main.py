@@ -37,3 +37,14 @@ def load_quiz(filename="quiz_questions.txt"):
                         option_d = lines[4].replace("D:", "").strip()
                         correct = lines[5].replace("Correct Answer:", "").strip().upper() 
 
+                        questions.append({
+                        "question": question_text,
+                        "options": [option_a, option_b, option_c, option_d],
+                        "answer": correct 
+                        })
+
+                except Exception as e:
+                        print(f"Error indentifying block:\n{block}\nError: {e}")
+                        continue
+
+        return questions
