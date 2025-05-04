@@ -28,3 +28,12 @@ def load_quiz(filename="quiz_questions.txt"):
                 lines = block.strip().split("\n") # remove extra empty space at the very beginning and end
                 if len(lines) < 6: # If the "slice" has fewer than 6 lines, skip
                         continue
+
+                try:
+                        question_text = lines[0].replace("Question:", "").strip() # we remove the word 'question' and .strip to remove trailing spaces
+                        option_a = lines[1].replace("A:", "").strip()
+                        option_b = lines[2].replace("B:", "").strip()
+                        option_c = lines[3].replace("C:", "").strip()
+                        option_d = lines[4].replace("D:", "").strip()
+                        correct = lines[5].replace("Correct Answer:", "").strip().upper() 
+
