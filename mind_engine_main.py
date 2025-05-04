@@ -81,3 +81,8 @@ class QuizApp:
         self.next_button.pack(pady=10)
 
         self.display_question()
+
+if __name__ == "__main__":
+    root = tk.Tk()
+    app = QuizApp(root)
+    root.mainloop()
