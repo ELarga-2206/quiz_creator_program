@@ -19,11 +19,25 @@
 
     # Part 1 of creating a pseudocode, it must match with our program requirement
 
-        # file reader
+        # file reader (we'll use read.file)
+        
+#so:
+        # def load quiz (file = quiz_questions.txt)
+            # open the file "r"
+                # then file.read
 
-        # open file
-            # read file
-                # end
+# since our txt file follows a specific format, the code must be able to read it
+
+        # so program it in such a way:
+            # each line cutouts = blocks, 1 block = 1 question
+            # on our text file it must strip the word "question" and the ABCD aswell
+            # we somehow have to extract the text
+            
+
+            # once it is working, we need to:
+                # srecuture the data so its easy to read
+                # once its easy to read we can program it to appear in the GUI
+
 
         # use tkinter (explore the library)
             # set the GUI?
