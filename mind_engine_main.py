@@ -64,3 +64,6 @@ class QuizApp:
         self.current = 0
         # store the user's score as they answer the questions
         self.score = 0
+
+        self.question_label = tk.Label(root, text="", font=("Arial", 16), wraplength=450, bg="#f0f8ff")
+        self.question_label.pack(pady=20) # part of the app class, so it can be updated later
