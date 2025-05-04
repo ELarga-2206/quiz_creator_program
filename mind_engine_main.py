@@ -1,15 +1,3 @@
-# lets brainstorm this
-
-# our goal is a quiz reader that will read the file created by the quiz creator
-
-# so its main features are:
-# individually asking questions
-# individually asking answers
-# checking how many the user got corect or instant correction
-# recording how many questions are correct
-# we also need to explore tkinter              # im assuming all of these things has to be explored and implemented using tkinter
-
-
 # what we need to know so far is:
 
 # how to program a file reader
@@ -26,7 +14,6 @@
             # open the file "r"
                 # then file.read
 
-
 # since our txt file follows a specific format, the code must be able to read it
 
         # so program it in such a way:
@@ -38,7 +25,10 @@
 # so:
         # use for loop
         # convert the borders in the txt file into 'blocks'
-        # 
+        # strip unecessary spaces to get the pure words only
+        # append to a list
+        # then we can call that list whenever
+
 # part 3 of the pseudocode, we'll focus on the tkinter on this one
 
         # on using tkinter we need to setup the:
