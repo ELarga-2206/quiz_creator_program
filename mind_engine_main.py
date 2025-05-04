@@ -48,3 +48,18 @@ def load_quiz(filename="quiz_questions.txt"):
                         continue
 
         return questions
+
+        quiz = tkinter.Tk()
+
+m.mainloop()
+
+        from tkinter import *
+        root = Tk()
+        w = Label(root, text='GeeksForGeeks.org!')
+        w.pack()
+        root.mainloop()
+           
+           # how do we set the GUI?
+           # what are needed?
+           # now that the data extracted is in our desired format, how do we design it?
+           # research
