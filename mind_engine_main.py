@@ -16,10 +16,21 @@
 # use GUI for creativity
 
 # the aforementioned features would be studied later
-# 
-# added the new line to avoid 'working tree clean'
-# testing
-# lets change another line of code, to see we can commit normally
-# we encounetered a merging error where our last failed 2 commits appeared in our commits
-# both in may 3 and may 4
-# lets save and try if we can commit normally
+
+    # Part 1 of creating a pseudocode, it must match with our program requirement
+
+        # file reader
+
+        # open file
+            # read file
+                # end
+
+        # use tkinter (explore the library)
+            # set the GUI?
+
+        # we need to see videos on how to OOP and tkinter
+
+        # the main problem herre is how we can create a file reader and transfer it to the GUi
+        # another problems is the expected features for a working quiz app
+        # mendokse
+
