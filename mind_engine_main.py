@@ -19,3 +19,12 @@ import random
 def load_quiz(filename="quiz_questions.txt"):
         with open(filename, "r") as file:
                 content = file.read().strip() # strip the spaces
+
+        # we'll split: 1 block = 1 question
+        blocks = content.split("----------------------------------------")
+        questions = [] # store it here
+
+        for block in blocks:
+                lines = block.strip().split("\n") # remove extra empty space at the very beginning and end
+                if len(lines) < 6: # If the "slice" has fewer than 6 lines, skip
+                        continue
