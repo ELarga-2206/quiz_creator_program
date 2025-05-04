@@ -67,3 +67,17 @@ class QuizApp:
 
         self.question_label = tk.Label(root, text="", font=("Arial", 16), wraplength=450, bg="#f0f8ff")
         self.question_label.pack(pady=20) # part of the app class, so it can be updated later
+
+        self.options = []
+        for i in range(4):
+            btn = tk.Button(root, text="", width=40, font=("Arial", 12), bg="#e6f2ff", command=lambda i=i: self.check_answer(i))
+            btn.pack(pady=5) 
+            self.options.append(btn)
+
+        self.feedback = tk.Label(root, text="", font=("Arial", 14), bg="#f0f8ff")
+        self.feedback.pack(pady=10)
+
+        self.next_button = tk.Button(root, text="Next", font=("Arial", 12), command=self.next_question, bg="#d1e7dd") # must have troubleshooting
+        self.next_button.pack(pady=10)
+
+        self.display_question()
