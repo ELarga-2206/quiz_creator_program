@@ -7,7 +7,8 @@
 # individually asking answers
 # checking how many the user got corect or instant correction
 # recording how many questions are correct
-# we also need to explore tkinter
+# we also need to explore tkinter              # im assuming all of these things has to be explored and implemented using tkinter
+
 
 # what we need to know so far is:
 
@@ -15,16 +16,16 @@
 # convert it to a quiz
 # use GUI for creativity
 
-# the aforementioned features would be studied later
 
-    # Part 1 of creating a pseudocode, it must match with our program requirement
+# Part 1 of creating a pseudocode, it must match with our program requirement
 
         # file reader (we'll use read.file)
-        
+       
 #so:
         # def load quiz (file = quiz_questions.txt)
             # open the file "r"
                 # then file.read
+
 
 # since our txt file follows a specific format, the code must be able to read it
 
@@ -32,19 +33,29 @@
             # each line cutouts = blocks, 1 block = 1 question
             # on our text file it must strip the word "question" and the ABCD aswell
             # we somehow have to extract the text
-            
+            # and store it so we can use it later
 
-            # once it is working, we need to:
-                # srecuture the data so its easy to read
-                # once its easy to read we can program it to appear in the GUI
+# so:
+        # use for loop
+        # convert the borders in the txt file into 'blocks'
+        # 
+# part 3 of the pseudocode, we'll focus on the tkinter on this one
 
+        # on using tkinter we need to setup the:
+            # window size
+            # buttons
+            # fonts 
+        
+        # how do we display the questions again?
+            # we need to display the question
 
-        # use tkinter (explore the library)
-            # set the GUI?
+        # after that, we need to create the ff function:
 
-        # we need to see videos on how to OOP and tkinter
+        # function for checking the answer
+        # function for next question button
+        # function for calculation of correct answer and total score
 
-        # the main problem herre is how we can create a file reader and transfer it to the GUi
-        # another problems is the expected features for a working quiz app
-        # mendokse
+# add ons will follow once we get the program working
+
+           
 
