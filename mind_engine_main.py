@@ -49,17 +49,18 @@ def load_quiz(filename="quiz_questions.txt"):
 
         return questions
 
-        quiz = tkinter.Tk()
+class QuizApp:
+    
+    def __init__(self, root):
+        self.root = root # to interact with and manage the main window (root).
+        self.root.title("Quiz App")
+        self.root.geometry("500x400")
+        self.root.configure(bg="#f0f8ff") # this is light blue
 
-m.mainloop()
-
-        from tkinter import *
-        root = Tk()
-        w = Label(root, text='GeeksForGeeks.org!')
-        w.pack()
-        root.mainloop()
-           
-           # how do we set the GUI?
-           # what are needed?
-           # now that the data extracted is in our desired format, how do we design it?
-           # research
+        # were gonna call load_quiz now, to make quiz data available to the QuizApp func
+        self.questions = load_quiz() 
+        random.shuffle(self.questions) # shuffle
+        # for the index of the question that the user is currently on:
+        self.current = 0
+        # store the user's score as they answer the questions
+        self.score = 0
