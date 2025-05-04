@@ -19,3 +19,7 @@
 # 
 # added the new line to avoid 'working tree clean'
 # testing
+# lets change another line of code, to see we can commit normally
+# we encounetered a merging error where our last failed 2 commits appeared in our commits
+# both in may 3 and may 4
+# lets save and try if we can commit normally
