@@ -1,6 +1,8 @@
 import tkinter as tk
 from tkinter import messagebox 
 import random 
+import winsound
+
 
 def load_quiz(filename="quiz_questions.txt"):
         with open(filename, "r") as file:
@@ -79,11 +81,13 @@ class QuizApp:
         if chr(65 + selected_index) == correct: 
                 self.score += 1    
                 self.feedback.config(text="✅ Correct!", fg="green")
+                winsound.PlaySound("correct.wav", winsound.SND_FILENAME)
             # if false then its not correct
         else:   
                 correct_index = ord(correct) - 65  
                 correct_text = self.questions[self.current]["options"][correct_index] 
                 self.feedback.config(text=f"❌ Incorrect! Correct: {correct}. {correct_text}", fg="red")
+                winsound.PlaySound("wrong.wav", winsound.SND_FILENAME)
         for btn in self.options:   
                 btn.config(state="disabled") 
 
