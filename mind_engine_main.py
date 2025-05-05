@@ -3,6 +3,15 @@ from tkinter import messagebox
 import random 
 import winsound
 
+#added theme
+BACKGROUND_COLOR = "#fdf6f0"
+QUESTION_FONT = ("Segoe UI", 16)
+OPTION_FONT = ("Segoe UI", 12)
+FEEDBACK_FONT = ("Segoe UI", 14)
+BUTTON_BG = "#e0f7fa"
+BUTTON_FG = "#333333"
+BUTTON_ACTIVE_BG = "#b2ebf2"
+
 
 def load_quiz(filename="quiz_questions.txt"):
         with open(filename, "r") as file:
@@ -43,25 +52,39 @@ class QuizApp:
         self.root.title("Quiz App")
         self.root.geometry("500x400")
         self.root.configure(bg="#f0f8ff") 
+        self.root.configure(bg=BACKGROUND_COLOR)
+
 
         self.questions = load_quiz() 
         random.shuffle(self.questions) # shuffle
         self.current = 0
         self.score = 0
 
-        self.question_label = tk.Label(root, text="", font=("Arial", 16), wraplength=450, bg="#f0f8ff")
-        self.question_label.pack(pady=20) 
+        self.question_label = tk.Label(
+                root, text="", font=QUESTION_FONT, wraplength=450,
+                bg=BACKGROUND_COLOR, fg=BUTTON_FG
+        )
+        self.question_label.pack(pady=20)
 
         self.options = []
         for i in range(4):
-            btn = tk.Button(root, text="", width=40, font=("Arial", 12), bg="#e6f2ff", command=lambda i=i: self.check_answer(i))
+            btn = tk.Button(
+                root, text="", width=40, font=OPTION_FONT,
+                bg=BUTTON_BG, fg=BUTTON_FG, activebackground=BUTTON_ACTIVE_BG,
+                command=lambda i=i: self.check_answer(i)
+        )
             btn.pack(pady=5) 
             self.options.append(btn)
 
-        self.feedback = tk.Label(root, text="", font=("Arial", 14), bg="#f0f8ff")
+        self.feedback = tk.Label(
+                root, text="", font=FEEDBACK_FONT, bg=BACKGROUND_COLOR, fg=BUTTON_FG
+        )
         self.feedback.pack(pady=10)
 
-        self.next_button = tk.Button(root, text="Next", font=("Arial", 12), command=self.next_question, bg="#d1e7dd") 
+        self.next_button = tk.Button(
+                root, text="Next", font=OPTION_FONT, command=self.next_question,
+                bg="#d1e7dd", fg=BUTTON_FG, activebackground="#bce5cb"
+        )
         self.next_button.pack(pady=10)
 
         self.display_question()
@@ -81,13 +104,13 @@ class QuizApp:
         if chr(65 + selected_index) == correct: 
                 self.score += 1    
                 self.feedback.config(text="✅ Correct!", fg="green")
-                winsound.PlaySound("correct.wav", winsound.SND_FILENAME)
+                winsound.PlaySound(r"C:\Users\jenny larga\OneDrive\Documents\quiz_reader\correct.wav", winsound.SND_FILENAME)
             # if false then its not correct
         else:   
                 correct_index = ord(correct) - 65  
                 correct_text = self.questions[self.current]["options"][correct_index] 
                 self.feedback.config(text=f"❌ Incorrect! Correct: {correct}. {correct_text}", fg="red")
-                winsound.PlaySound("wrong.wav", winsound.SND_FILENAME)
+                winsound.PlaySound(r"C:\Users\jenny larga\OneDrive\Documents\quiz_reader\wrong.wav", winsound.SND_FILENAME)
         for btn in self.options:   
                 btn.config(state="disabled") 
 
@@ -104,8 +127,9 @@ class QuizApp:
         for widget in self.root.winfo_children(): 
                 widget.destroy()  
         final_score = f"You scored {self.score} out of {len(self.questions)}"         
-        tk.Label(self.root, text="🎉 Quiz Complete!", font=("Arial", 20), bg="#f0f8ff").pack(pady=20)
-        tk.Label(self.root, text=final_score, font=("Arial", 16), bg="#f0f8ff").pack(pady=10)
+        self.root.configure(bg=BACKGROUND_COLOR)
+        tk.Label(self.root, text="🎉 Quiz Complete!", font=("Segoe UI", 20), bg=BACKGROUND_COLOR, fg=BUTTON_FG).pack(pady=20)
+        tk.Label(self.root, text=final_score, font=QUESTION_FONT, bg=BACKGROUND_COLOR, fg=BUTTON_FG).pack(pady=10)
 
 if __name__ == "__main__":
     root = tk.Tk()
