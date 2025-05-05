@@ -85,10 +85,10 @@ class QuizApp:
         def display_question(self):
                 if self.current < len(self.questions):
                         q = self.questions[self.current]
-                        self.question_label.insert(text=f"Q{self.current + 1}: {q['question']}")
+                        self.question_label.config(text=f"Q{self.current + 1}: {q['question']}")
                         for i, option in enumerate(q["options"]):
-                                .options[i].insert(text=f"{chr(65+i)}. {option}")
-                self.feedback.insert(text="")
+                                .options[i].config(text=f"{chr(65+i)}. {option}")
+                self.feedback.config(text="")
         else:
             self.end_quiz()
 
