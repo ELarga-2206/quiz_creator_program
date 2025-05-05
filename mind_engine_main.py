@@ -82,6 +82,16 @@ class QuizApp:
 
         self.display_question()
 
+        def display_question(self):
+                if self.current < len(self.questions):
+                        q = self.questions[self.current]
+                        self.question_label.insert(text=f"Q{self.current + 1}: {q['question']}")
+                        for i, option in enumerate(q["options"]):
+                                .options[i].insert(text=f"{chr(65+i)}. {option}")
+                self.feedback.insert(text="")
+        else:
+            self.end_quiz()
+
 if __name__ == "__main__":
     root = tk.Tk()
     app = QuizApp(root)
