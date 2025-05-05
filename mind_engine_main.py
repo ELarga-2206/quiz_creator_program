@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import messagebox 
 import random 
 import winsound
+import time
 
 #added theme
 BACKGROUND_COLOR = "#fdf6f0"
@@ -48,17 +49,26 @@ def load_quiz(filename="quiz_questions.txt"):
 
 class QuizApp:
     def __init__(self, root):
+        import time
         self.root = root 
         self.root.title("Quiz App")
-        self.root.geometry("500x400")
+        self.root.geometry("500x450") # increased to accomodaTe timer
         self.root.configure(bg="#f0f8ff") 
         self.root.configure(bg=BACKGROUND_COLOR)
+        self.start_time = time.time()
 
 
         self.questions = load_quiz() 
         random.shuffle(self.questions) # shuffle
         self.current = 0
         self.score = 0
+
+        self.timer_label = tk.Label(
+            root, text="Time: 0:00", font=("Segoe UI", 12),
+            bg=BACKGROUND_COLOR, fg=BUTTON_FG
+        )
+        self.timer_label.pack(pady=5)
+        self.update_timer()  
 
         self.question_label = tk.Label(
                 root, text="", font=QUESTION_FONT, wraplength=450,
@@ -88,6 +98,15 @@ class QuizApp:
         self.next_button.pack(pady=10)
 
         self.display_question()
+
+    def update_timer(self):
+        elapsed_time = time.time() - self.start_time
+        minutes = int(elapsed_time // 60)
+        seconds = int(elapsed_time % 60)
+        self.timer_label.config(text=f"Time: {minutes}:{seconds:02d}")
+        # Update every second
+        self.root.after(1000, self.update_timer)
+
 
     def display_question(self):
         if self.current < len(self.questions):
@@ -126,10 +145,19 @@ class QuizApp:
     def end_quiz(self):
         for widget in self.root.winfo_children(): 
                 widget.destroy()  
-        final_score = f"You scored {self.score} out of {len(self.questions)}"         
+
+        elapsed_time = time.time() - self.start_time
+        minutes = int(elapsed_time // 60)
+        seconds = int(elapsed_time % 60)
+        time_taken = f"{minutes}:{seconds:02d}"
+
+        final_score = f"You scored {self.score} out of {len(self.questions)}"  
+        time_message = f"Time taken: {time_taken}"       
+        
         self.root.configure(bg=BACKGROUND_COLOR)
         tk.Label(self.root, text="🎉 Quiz Complete!", font=("Segoe UI", 20), bg=BACKGROUND_COLOR, fg=BUTTON_FG).pack(pady=20)
         tk.Label(self.root, text=final_score, font=QUESTION_FONT, bg=BACKGROUND_COLOR, fg=BUTTON_FG).pack(pady=10)
+        tk.Label(self.root, text=time_message, font=QUESTION_FONT, bg=BACKGROUND_COLOR, fg=BUTTON_FG).pack(pady=10)
 
 if __name__ == "__main__":
     root = tk.Tk()
