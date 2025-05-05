@@ -114,8 +114,12 @@ class QuizApp:
                 else:
                         self.end_quiz()
 
-        
-
+        def end_quiz(self):
+                for widget in self.root.winfo_children(): ## method returns a list of all the widgets (labels, buttons, etc)
+                       widget.destroy()  # remove the widget from the window and destroy it
+                final_score = f"You scored {self.score} out of {len(self.questions)}"         # display users score
+                tk.Label(self.root, text="🎉 Quiz Complete!", font=("Arial", 20), bg="#f0f8ff").pack(pady=20) # Displays a large CONGRATULATIONS
+                tk.Label(self.root, text=final_score, font=("Arial", 16), bg="#f0f8ff").pack(pady=10)
 
 if __name__ == "__main__":
     root = tk.Tk()
