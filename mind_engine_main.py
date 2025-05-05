@@ -87,7 +87,7 @@ class QuizApp:
                         q = self.questions[self.current]
                         self.question_label.config(text=f"Q{self.current + 1}: {q['question']}")
                         for i, option in enumerate(q["options"]):
-                                .options[i].config(text=f"{chr(65+i)}. {option}")
+                                self.options[i].config(text=f"{chr(65+i)}. {option}")
                         self.feedback.config(text="")
                 else:
                         self.end_quiz() # wrong alignment
