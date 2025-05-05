@@ -18,7 +18,6 @@ def load_quiz(filename="quiz_questions.txt"):
         with open(filename, "r") as file:
                 content = file.read().strip() 
 
-        
         blocks = content.split("----------------------------------------")
         questions = [] 
 
@@ -56,7 +55,6 @@ class QuizApp:
         self.root.configure(bg="#f0f8ff") 
         self.root.configure(bg=BACKGROUND_COLOR)
         self.start_time = time.time()
-
 
         self.questions = load_quiz() 
         random.shuffle(self.questions) # shuffle
