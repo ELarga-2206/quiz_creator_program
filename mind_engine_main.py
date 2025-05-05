@@ -88,9 +88,25 @@ class QuizApp:
                         self.question_label.config(text=f"Q{self.current + 1}: {q['question']}")
                         for i, option in enumerate(q["options"]):
                                 .options[i].config(text=f"{chr(65+i)}. {option}")
-                self.feedback.config(text="")
-        else:
-            self.end_quiz()
+                        self.feedback.config(text="")
+                else:
+                        self.end_quiz() # wrong alignment
+
+        def check_answer(self, selected_index):
+                correct = self.questions[self.current]["answer"] # to get question data for the current question.
+                if chr(65 + selected_index) == correct: # 65 since its ASCII for A (calculates the ASCII code of the correct letter)
+                        self.score += 1    # checks if the user's choice matches the correct answer, automatically adds 1
+                        self.feedback.config(text="✅ Correct!", fg="green")
+            # if false then its not correct
+                else:   
+                        correct_index = ord(correct) - 65  # We subtract 65 because the ASCII value of "A" is 65
+                        correct_text = self.questions[self.current]["options"][correct_index] # Gets the question data, lists of choices, and correct ans
+                        self.feedback.config(text=f"❌ Incorrect! Correct: {correct}. {correct_text}", fg="red")
+                for btn in self.options:   # loop through each button in the self.options list
+                        btn.config(state="disabled") #  disables all the answer option buttons
+
+        
+
 
 if __name__ == "__main__":
     root = tk.Tk()
