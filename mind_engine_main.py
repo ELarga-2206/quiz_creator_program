@@ -50,7 +50,6 @@ def load_quiz(filename="quiz_questions.txt"):
         return questions
 
 class QuizApp:
-    
     def __init__(self, root):
         self.root = root # to interact with and manage the main window (root).
         self.root.title("Quiz App")
@@ -82,44 +81,44 @@ class QuizApp:
 
         self.display_question()
 
-        def display_question(self):
-                if self.current < len(self.questions):
-                        q = self.questions[self.current]
-                        self.question_label.config(text=f"Q{self.current + 1}: {q['question']}")
-                        for i, option in enumerate(q["options"]):
-                                self.options[i].config(text=f"{chr(65+i)}. {option}")
-                        self.feedback.config(text="")
-                else:
-                        self.end_quiz() # wrong alignment
+    def display_question(self):
+        if self.current < len(self.questions):
+                q = self.questions[self.current]
+                self.question_label.config(text=f"Q{self.current + 1}: {q['question']}")
+                for i, option in enumerate(q["options"]):
+                        self.options[i].config(text=f"{chr(65+i)}. {option}")
+                self.feedback.config(text="")
+        else:
+                self.end_quiz() # wrong alignment
 
-        def check_answer(self, selected_index):
-                correct = self.questions[self.current]["answer"] # to get question data for the current question.
-                if chr(65 + selected_index) == correct: # 65 since its ASCII for A (calculates the ASCII code of the correct letter)
-                        self.score += 1    # checks if the user's choice matches the correct answer, automatically adds 1
-                        self.feedback.config(text="✅ Correct!", fg="green")
+    def check_answer(self, selected_index):
+        correct = self.questions[self.current]["answer"] # to get question data for the current question.
+        if chr(65 + selected_index) == correct: # 65 since its ASCII for A (calculates the ASCII code of the correct letter)
+                self.score += 1    # checks if the user's choice matches the correct answer, automatically adds 1
+                self.feedback.config(text="✅ Correct!", fg="green")
             # if false then its not correct
-                else:   
-                        correct_index = ord(correct) - 65  # We subtract 65 because the ASCII value of "A" is 65
-                        correct_text = self.questions[self.current]["options"][correct_index] # Gets the question data, lists of choices, and correct ans
-                        self.feedback.config(text=f"❌ Incorrect! Correct: {correct}. {correct_text}", fg="red")
-                for btn in self.options:   # loop through each button in the self.options list
-                        btn.config(state="disabled") #  disables all the answer option buttons
+        else:   
+                correct_index = ord(correct) - 65  # We subtract 65 because the ASCII value of "A" is 65
+                correct_text = self.questions[self.current]["options"][correct_index] # Gets the question data, lists of choices, and correct ans
+                self.feedback.config(text=f"❌ Incorrect! Correct: {correct}. {correct_text}", fg="red")
+        for btn in self.options:   # loop through each button in the self.options list
+                btn.config(state="disabled") #  disables all the answer option buttons
 
-        def next_question(self):
-                self.current += 1  # index of the question being displayed
-                if self.current < len(self.questions): # checks if there are more questions to show.
-                        for btn in self.options: # loop goes through each button in the selfoptions list 
-                                btn.config(state="normal")
-                        self.display_question() # show the next question and its answer options
-                else:
-                        self.end_quiz()
+    def next_question(self):
+        self.current += 1  # index of the question being displayed
+        if self.current < len(self.questions): # checks if there are more questions to show.
+                for btn in self.options: # loop goes through each button in the selfoptions list 
+                        btn.config(state="normal")
+                self.display_question() # show the next question and its answer options
+        else:
+                self.end_quiz()
 
-        def end_quiz(self):
-                for widget in self.root.winfo_children(): ## method returns a list of all the widgets (labels, buttons, etc)
-                       widget.destroy()  # remove the widget from the window and destroy it
-                final_score = f"You scored {self.score} out of {len(self.questions)}"         # display users score
-                tk.Label(self.root, text="🎉 Quiz Complete!", font=("Arial", 20), bg="#f0f8ff").pack(pady=20) # Displays a large CONGRATULATIONS
-                tk.Label(self.root, text=final_score, font=("Arial", 16), bg="#f0f8ff").pack(pady=10)
+    def end_quiz(self):
+        for widget in self.root.winfo_children(): ## method returns a list of all the widgets (labels, buttons, etc)
+                widget.destroy()  # remove the widget from the window and destroy it
+        final_score = f"You scored {self.score} out of {len(self.questions)}"         # display users score
+        tk.Label(self.root, text="🎉 Quiz Complete!", font=("Arial", 20), bg="#f0f8ff").pack(pady=20) # Displays a large CONGRATULATIONS
+        tk.Label(self.root, text=final_score, font=("Arial", 16), bg="#f0f8ff").pack(pady=10)
 
 if __name__ == "__main__":
     root = tk.Tk()
