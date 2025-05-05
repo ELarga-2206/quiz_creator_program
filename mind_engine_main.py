@@ -105,6 +105,15 @@ class QuizApp:
                 for btn in self.options:   # loop through each button in the self.options list
                         btn.config(state="disabled") #  disables all the answer option buttons
 
+        def next_question(self):
+                self.current += 1  # index of the question being displayed
+                if self.current < len(self.questions): # checks if there are more questions to show.
+                        for btn in self.options: # loop goes through each button in the selfoptions list 
+                                btn.config(state="normal")
+                        self.display_question() # show the next question and its answer options
+                else:
+                        self.end_quiz()
+
         
 
 
